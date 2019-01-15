@@ -4,7 +4,9 @@
   "description": "Modern interview tracking website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,19 +19,37 @@
   },
   "homepage": "https://github.com/team-eevee/xView#readme",
   "dependencies": {
+<<<<<<< HEAD
     "body-parser": "^1.18.3",
+=======
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+>>>>>>> 541c990ab56cc0c22f43cfc8f127d443b966b10b
     "d3": "^5.7.0",
     "express": "^4.16.4",
     "node": "^11.6.0",
     "path": "^0.12.7",
+<<<<<<< HEAD
     "pg-promise": "^8.5.4",
+=======
+>>>>>>> 541c990ab56cc0c22f43cfc8f127d443b966b10b
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+<<<<<<< HEAD
     "redux": "^4.0.1"
+=======
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+>>>>>>> 541c990ab56cc0c22f43cfc8f127d443b966b10b
   },
   "devDependencies": {
+    "dotenv": "^6.2.0",
     "eslint": "^5.12.0",
     "jest": "^23.6.0",
     "webpack": "^4.28.4"
