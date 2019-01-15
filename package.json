@@ -1,0 +1,34 @@
+{
+  "name": "xview",
+  "version": "1.0.0",
+  "description": "Modern interview tracking website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-eevee/xView.git"
+  },
+  "author": "Josie Glore, Jae Lee, Adrian Sun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-eevee/xView/issues"
+  },
+  "homepage": "https://github.com/team-eevee/xView#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "node": "^11.6.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "d3": "^5.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "jest": "^23.6.0",
+    "webpack": "^4.28.4"
+  }
+}
