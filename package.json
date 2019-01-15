@@ -17,14 +17,15 @@
   },
   "homepage": "https://github.com/team-eevee/xView#readme",
   "dependencies": {
+    "d3": "^5.7.0",
     "express": "^4.16.4",
     "node": "^11.6.0",
+    "pg-promise": "^8.5.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1",
-    "d3": "^5.7.0"
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
