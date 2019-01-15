@@ -14,8 +14,14 @@ app.use(express.static(path.resolve(__dirname,'../client/build')));
 //route for authentication
 
 
+app.post('/github_oauth_cb',(req,res)=>{
 
 
+  
+  
+  
+
+})
 //
 
 
