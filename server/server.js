@@ -8,11 +8,15 @@ const PORT = 3000;
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser())
-app.use(express.static(path.resolve(__dirname,'../client/build')))
+app.use(cookieParser());
+app.use(express.static(path.resolve(__dirname,'../client/build')));
+
+//route for authentication
 
 
 
+
+//
 
 
 
