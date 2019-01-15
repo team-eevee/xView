@@ -19,34 +19,27 @@
   },
   "homepage": "https://github.com/team-eevee/xView#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "body-parser": "^1.18.3",
-=======
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
->>>>>>> 541c990ab56cc0c22f43cfc8f127d443b966b10b
     "d3": "^5.7.0",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "node": "^11.6.0",
     "path": "^0.12.7",
-<<<<<<< HEAD
-    "pg-promise": "^8.5.4",
-=======
->>>>>>> 541c990ab56cc0c22f43cfc8f127d443b966b10b
+    "querystring": "^0.2.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
-<<<<<<< HEAD
-    "redux": "^4.0.1"
-=======
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
+    "request": "^2.88.0",
+    "url": "^0.11.0",
+    "uuid": "^3.3.2",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
->>>>>>> 541c990ab56cc0c22f43cfc8f127d443b966b10b
   },
   "devDependencies": {
     "body-parser": "^1.18.3",

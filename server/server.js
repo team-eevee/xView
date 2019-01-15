@@ -1,6 +1,13 @@
 const express = require('express');
 const db = require('./db');
 
+require('dotenv').config();
+const session = require('express-session');
+const request = require('request');
+const qs = require('querystring');
+const randomString = require('uuid');
+const csrfString = randomString();
+
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const PORT = 3000;
