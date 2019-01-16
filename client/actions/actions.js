@@ -19,3 +19,8 @@ export const dropdownChange = (value) => ({
   type: types.DROPDOWN_CHANGE,
   payload: value,
 })
+
+export const logIn = (user) => ({
+  type: types.LOG_IN,
+  payload: user,
+})

@@ -20,6 +20,13 @@ module.exports = {
         },
       },
       {
+        test: /\.css$/,
+        use:
+          process.env.NODE_ENV === 'production'
+            ? [MiniCssExtractPlugin.loader, 'css-loader']
+            : ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.s?css$/,
         use: [
           {

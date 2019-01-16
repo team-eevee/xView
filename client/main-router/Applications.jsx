@@ -33,7 +33,7 @@ class Applications extends React.Component {
               <Link to='/view-app'>View Application</Link>
             </li>
             <li>
-              <Link to='/create-app'>Add Job Prospect</Link>
+              <Link to='/create-app'><button>Add Job Prospect</button></Link>
             </li>
           </ul>
           <Switch>

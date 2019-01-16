@@ -2,6 +2,7 @@ import React from 'react';
 import Dropdown from 'react-dropdown';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
+// import 'react-dropdown/style.css';
 
 const DROPDOWN_OPTIONS = [
   'Interested', 'Applied', 'Phone Screen', 'Technical Interview', 'Onsite', 'Offer', 'Negotiation',
@@ -15,10 +16,10 @@ const mapDispatchToProps = dispatch => ({
   companyChange: (event) => {
     dispatch(actions.inputChange(event.target.value));
   },
-  locationChange: (event) => {
+  recruiterChange: (event) => {
     dispatch(actions.inputChange(event.target.value));
   },
-  contactChange: (event) => {
+  contactInfoChange: (event) => {
     dispatch(actions.inputChange(event.target.value));
   },
   dropdownChange: (event) => {
@@ -37,9 +38,9 @@ const CreateApp = (props) => {
       <h2>Create a New Application</h2>
       <input type='text' placeholder='Company Name' onChange={props.companyChange} />
       <br/>
-      <input type='text' placeholder='Location' onChange={props.locationChange} />
+      <input type='text' placeholder='Recruiter / Contact Name' onChange={props.recruiterChange} />
+      <input type='text' placeholder='Recruiter / Contact Email' onChange={props.contactInfoChange} />
       <br/>
-      <input type='text' placeholder='' />
       <Dropdown
         options={DROPDOWN_OPTIONS}
         placeholder='Select application phase'
