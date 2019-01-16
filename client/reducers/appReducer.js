@@ -1,21 +1,22 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-
+  appList: null,
+  
 };
 
 const appReducer = (state = initialState, action) => {
-  let list;
+  let appList;
   switch(action.type) {
     case types.GET_APPS:
-    list = action.payload;
+    appList = action.payload;
     return {
       ...state,
-      list,
+      appList,
     }
     default: 
       return state;
   }
 }
 
-export default appsReducer;
+export default appReducer;

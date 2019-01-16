@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 // import Wrapper from './containers/MainContainer.jsx';
-import history from './router/History.jsx';
-import Login from './router/Login.jsx';
-import Applications from './router/Applications.jsx';
-import InterviewQs from './router/InterviewQs.jsx';
-import Stats from './router/Stats.jsx';
-import Profile from './router/Profile.jsx';
+import history from './main-router/History.jsx';
+import Login from './main-router/Login.jsx';
+import Applications from './main-router/Applications.jsx';
+import InterviewQs from './main-router/InterviewQs.jsx';
+import Stats from './main-router/Stats.jsx';
+import Profile from './main-router/Profile.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class App extends Component {
   }
   render() {
     return (
-      <Router history={history}>
+      <BrowserRouter>
         <div>
           <ul>
             <li>
@@ -38,7 +38,7 @@ class App extends Component {
           <Route path='/profile' component={Profile} />
         </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
       // <div>
       //   <h1>Hi</h1>
       // </div>

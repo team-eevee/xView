@@ -9,3 +9,13 @@ export const getApps = () => ({
   //   fetch()
   // }
 })
+
+export const inputChange = (text) => ({
+  type: types.INPUT_CHANGE,
+  payload: text,
+})
+
+export const dropdownChange = (value) => ({
+  type: types.DROPDOWN_CHANGE,
+  payload: value,
+})
