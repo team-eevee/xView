@@ -5,11 +5,9 @@
 CREATE TABLE "user" (
   "user_id" SERIAL PRIMARY KEY,
   "username" VARCHAR NOT NULL,
-  "phone_number" INTEGER NOT NULL,
 	"email" VARCHAR NOT NULL,
-  "password" VARCHAR NOT NULL,
-  "url" VARCHAR NOT NULL,
-  "avatar" VARCHAR NOT NULL
+  "avatar" VARCHAR NOT NULL,
+  "session" VARCHAR
 );
 
 DROP TABLE "user"
