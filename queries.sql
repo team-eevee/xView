@@ -10,7 +10,7 @@ CREATE TABLE "user" (
   "session" VARCHAR
 );
 
-DROP TABLE "user"
+DROP TABLE "user";
 
 -- example
 INSERT INTO user (username, email, url, avatar) VALUES ($1, $2, $3, $4);
@@ -26,7 +26,7 @@ CREATE TABLE "company" (
   "logo" VARCHAR NOT NULL
 );
 
-DROP TABLE "company"
+DROP TABLE "company";
 
 INSERT INTO company ("name", "domain", "description", "location", "logo")
 	VALUES ("Codesmith", "http://www.codesmith.io", "not a bootcamp", "Venice", "http://www.google.com/codesmith-picture");
@@ -41,7 +41,7 @@ CREATE TABLE "app" (
   "created_at" date not null
 );
 
-DROP TABLE "app"
+DROP TABLE "app";
 
 INSERT INTO "app"
 	VALUES ((SELECT user_id FROM user WHERE email='jaelee213@gmail.com'), (SELECT company_id FROM company WHERE 'name'='Codesmith'))
@@ -55,7 +55,7 @@ CREATE TABLE "notes" (
   "note" VARCHAR NOT NULL
 );
 
-DROP TABLE "notes"
+DROP TABLE "notes";
 
 ---------------------------------------- 
 CREATE TABLE "recruiter" (
@@ -66,7 +66,7 @@ CREATE TABLE "recruiter" (
   "phone_number" INTEGER NOT NULL
 );
 
-DROP TABLE "recruiter"
+DROP TABLE "recruiter";
 
 ---------------------------------------- 
 
@@ -76,6 +76,14 @@ CREATE TABLE "app_recruiter" (
   "fk_recruiter_id" INTEGER REFERENCES recruiter(recruiter_id)
 );
 
-DROP TABLE "app_recruiter"
+DROP TABLE "app_recruiter";
 
+----------------------------------------
 
+CREATE TABLE "interview" (
+  "interview_id" SERIAL PRIMARY KEY,
+  "fk_app_id" INTEGER REFERENCES app(app_id),
+  "date" date
+);
+
+DROP TABLE "interview";
