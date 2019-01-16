@@ -4,6 +4,7 @@
   "description": "Modern interview tracking website",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
     "webpack": "webpack"
@@ -47,7 +48,7 @@
     "dotenv": "^6.2.0",
     "eslint": "^5.12.0",
     "jest": "^23.6.0",
-    "pgpromise": "^0.1.1",
+    "pg-promise": "^8.5.4",
     "webpack": "^4.28.4"
   }
 }
