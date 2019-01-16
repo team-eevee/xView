@@ -10,6 +10,10 @@ const csrfString = randomString();
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
+const authController = require('./controllers/auth-controller');
+const userController = require('./controllers/user-controller');
+
 const PORT = 3000;
 
 const app = express();
@@ -68,7 +72,7 @@ app.all('/login/github/callback', (req, res) => {
 				// response will contain your new access token store token in session
 				req.session.access_token = qs.parse(body).access_token;
 				// redirect user to /home page 
-				res.redirect('/home');
+				res.redirect('/gitHubLogin');
 			},
 		);
 	} else {
@@ -77,23 +81,34 @@ app.all('/login/github/callback', (req, res) => {
 	}
 });
 
-app.get('/home', (req, res) => {
-	// request to get user information
-	request.get(
-		{
-			url: 'https://api.github.com/user',
-			headers: {
-				Authorization: 'token ' + req.session.access_token,
-				'User-Agent': 'xView',
-			}
-		},
-		(err, response, body) => {
-			// the response is located in body
-			res.send(
-				"<p>Logged In!</p>" + body + "<p>Please work</p>"
-			);
-		},
-	)
+app.get('/gitHubLogin', authController.getGitHubUser, userController.verifyUser, (req, res) => {
+	res.status(200).send(res.locals.user);
 });
+
+// get all applications
+app.get('/allApp', (req, res) => {
+
+});
+
+// create new application
+app.post('/createApp', (req, res) => {
+
+});
+
+// delete application
+app.delete('/deleteApp', (req, res) => {
+
+});
+
+// update application
+app.patch('/updateApp', (req, res) => {
+
+});
+
+// error handler 
+app.use((err, req, res, next) => {
+	res.status(500).send('Error: ', err);
+});
+
 
 app.listen(PORT,()=>console.log(`listening on port: ${PORT}`));

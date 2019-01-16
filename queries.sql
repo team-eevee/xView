@@ -4,8 +4,7 @@
 
 CREATE TABLE "user" (
   "user_id" SERIAL PRIMARY KEY,
-  "user_firstname" VARCHAR NOT NULL,
-	"user_lastname" VARCHAR NOT NULL,
+  "username" VARCHAR NOT NULL,
   "phone_number" INTEGER NOT NULL,
 	"email" VARCHAR NOT NULL,
   "password" VARCHAR NOT NULL,
@@ -16,8 +15,7 @@ CREATE TABLE "user" (
 DROP TABLE "user"
 
 -- example
-INSERT INTO user ("user_firstname", "user_lastname", "phone_number", "password", "url", "avatar")
-	VALUES ('Jae', 'Lee', '3107801175', 'jaelee213', 'github.com/jaelee213', 'http://www.google.com/picture-of-jae');
+INSERT INTO user (username, email, url, avatar) VALUES ($1, $2, $3, $4);
 
 ---------------------------------------- 
 
@@ -39,7 +37,7 @@ INSERT INTO company ("name", "domain", "description", "location", "logo")
 
 CREATE TABLE "app" (
   "app_id" SERIAL PRIMARY KEY,
-  "fk_user_id" INTEGER REFERENCES user(user_id),
+  "fk_user_id" INTEGER REFERENCES "user"(user_id),
   "fk_company_id" INTEGER REFERENCES company(company_id),
   "status" VARCHAR NOT NULL,
   "created_at" date not null
@@ -62,17 +60,6 @@ CREATE TABLE "notes" (
 DROP TABLE "notes"
 
 ---------------------------------------- 
-
-CREATE TABLE "app_recruiter" (
-  "app_rec_id" SERIAL PRIMARY KEY,
-  "fk_app_id" INTEGER REFERENCES app(app_id),
-  "fk_recruiter_id" INTEGER REFERENCES recruiter(recruiter_id)
-);
-
-DROP TABLE "app_recruiter"
-
----------------------------------------- 
-
 CREATE TABLE "recruiter" (
   "recruiter_id" SERIAL PRIMARY KEY,
   "fk_company_id" INTEGER REFERENCES company(company_id),
@@ -82,3 +69,15 @@ CREATE TABLE "recruiter" (
 );
 
 DROP TABLE "recruiter"
+
+---------------------------------------- 
+
+CREATE TABLE "app_recruiter" (
+  "app_rec_id" SERIAL PRIMARY KEY,
+  "fk_app_id" INTEGER REFERENCES app(app_id),
+  "fk_recruiter_id" INTEGER REFERENCES recruiter(recruiter_id)
+);
+
+DROP TABLE "app_recruiter"
+
+
