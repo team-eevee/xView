@@ -13,9 +13,9 @@ const mapDispatchToProps = dispatch => ({
   // logpass: (event) => {
   //   dispatch(actions.logPass(event.target.value));
   // },
-  // login: (event) => {
-  //   dispatch(actions.logIn(event));
-  // }
+  login: (event) => {
+    dispatch(actions.logIn(event));
+  }
 });
 
 const Login = (props) => {
@@ -25,7 +25,7 @@ const Login = (props) => {
       <input type='text' placeholder="Email" onChange={props.logemail} />
       <br/>
       <input type='text' placeholder="Password" onChange={props.logpass} />
-      <button onClick={() => { props.login(props.user); }}>Log in!</button>
+      <button onClick={() => { props.login(); }}>Log in!</button>
     </div>
   );
 };

@@ -20,7 +20,12 @@ export const dropdownChange = (value) => ({
   payload: value,
 })
 
-export const logIn = (user) => ({
+export const logIn = (user) => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/getuser', {
+      method: 
+    })
+  }
   type: types.LOG_IN,
   payload: user,
-})
+}
