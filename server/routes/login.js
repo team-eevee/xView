@@ -6,6 +6,8 @@ const request = require("request");
 const qs = require("querystring");
 const randomString = require("uuid/v4");
 const csrfString = randomString();
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const authController = require("../controllers/auth-controller");
 const userController = require("../controllers/user-controller");
 const axios = require("axios");
@@ -24,6 +26,18 @@ router.use(
     saveUninitialized: false
   })
 );
+
+// router.use(cookieParser());
+
+// until adrian is done
+router.get('/checkUser', (req, res) => {
+	if (req.cookies.user) {
+		res.status(200).json({ loggedIn: true })
+	} else {
+		res.status(200).json({ loggedIn: false })
+	}
+});
+
 
 // the initial route when user presses login button
 router.get("/github", (req, res, next) => {
@@ -69,7 +83,7 @@ router.get(
   authController.getGitHubUser,
   userController.verifyUser,
   (req, res) => {
-    res.status(200).send({ loggedIn: true });
+    res.redirect('/');
   }
 );
 
@@ -88,7 +102,7 @@ router.get(
   authController.getGoogleUser,
   userController.verifyUser,
   (req, res) => {
-    res.status(200).send({ loggedIn: true });
+    res.redirect('/');
   }
 );
 

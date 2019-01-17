@@ -25,7 +25,7 @@ const appReducer = (state = initialState, action) => {
       ...state,
       companyName
     }
-    case types.
+    // case types.
     case types.CREATE_APP: 
 
     default: 
