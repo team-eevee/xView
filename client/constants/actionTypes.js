@@ -1,2 +1,9 @@
+export const GET_APPS = 'GET_APPS';
 export const CREATE_APP = 'CREATE_APP';
 export const DELETE_APP = 'DELETE_APP';
+export const COMPANY_CHANGE = 'COMPANY_CHANGE';
+export const RECRUITER_CHANGE = 'RECRUITER_CHANGE';
+export const CONTACT_INFO_CHANGE = 'CONTACT_INFO_CHANGE';
+export const DROPDOWN_CHANGE = 'DROPDOWN_CHANGE';
+export const LOG_IN = 'LOG_IN';
+export const CHECK_LOGIN = 'CHECK_LOGIN';
