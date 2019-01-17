@@ -4,6 +4,7 @@
   "description": "Modern interview tracking website",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
     "webpack": "webpack",
@@ -25,6 +26,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
+    "clearbit": "^1.3.4",
     "d3": "^5.7.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
