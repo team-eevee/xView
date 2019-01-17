@@ -56,4 +56,29 @@ function verifyUser(req, res, next) {
     .catch(err => next(err));
 }
 
-module.exports = { verifyUser };
+const checkUser = (req, res, next) => {
+  //get data from cookie
+  if (req.cookies.user) {
+    const sessionHash = req.cookies.user;
+    selectQuery = 'SELECT session,user_id from "user"';
+		res.locals.logged = {loggedIn:false}
+
+    //get database sessions and compare with bcrypt
+    db.query(selectQuery).then(data => {
+			console.log(data);
+      data.forEach(async (ssid, index) => {
+				console.log('comparing',ssid.session,sessionHash);
+        await bcrypt.compare(ssid.session, sessionHash, (err, result) => {
+          if (result) {
+						res.locals.logged = {loggedIn:true, userId : ssid.user_id}
+            return next();
+          } else if (index === data.length - 1) {
+            return next();
+          }
+        });
+      });
+    });
+  }
+};
+
+module.exports = { verifyUser, checkUser };

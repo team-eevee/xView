@@ -15,6 +15,12 @@ const axiosConfig = {
   "Content-Type": "application/json"
 };
 
+router.get("/checkUser", 
+  userController.checkUser, 
+  (req, res) => {
+  res.status(200).send(res.locals.logged);
+});
+
 /************************ GITHUB OAUTH ************************/
 
 // initialize session
@@ -27,16 +33,6 @@ router.use(
   })
 );
 
-// router.use(cookieParser());
-
-// until adrian is done
-router.get('/checkUser', (req, res) => {
-	if (req.cookies.user) {
-		res.status(200).json({ loggedIn: true })
-	} else {
-		res.status(200).json({ loggedIn: false })
-	}
-});
 
 
 // the initial route when user presses login button
@@ -86,8 +82,9 @@ router.get(
     res.redirect('/');
   }
 );
-
 /******************************************************************************************/
+
+
 
 /*************************************** GOOGLE OAUTH ****************(********************/
 

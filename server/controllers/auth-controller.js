@@ -1,5 +1,7 @@
 const request = require("request");
 
+/*************************************** GITHUB OAUTH ************************************/
+
 // O-Auth request to Github to get authenticated user information
 const getGitHubUser = (req, res, next) => {
   // request to get user information
@@ -19,7 +21,7 @@ const getGitHubUser = (req, res, next) => {
   );
 };
 
-/*************************************** GOOGLE OAUTH ****************(********************/
+/*************************************** GOOGLE OAUTH ************************************/
 
 const { google } = require("googleapis");
 const googleConfig = {
@@ -53,7 +55,7 @@ const getGoogleUrl = (req, res, next) => {
 
 const setGoogleCredentials = async (req, res, next) => {
   //take request code
-  const code = req.query.code;
+  const {code} = req.query;
   if (!code) return res.status(400).send("invalid request");
   else {
     const { tokens } = await oauth2Client.getToken(code);
@@ -81,5 +83,5 @@ module.exports = {
   getGitHubUser,
   getGoogleUser,
   setGoogleCredentials,
-  getGoogleUrl
+  getGoogleUrl,
 };
