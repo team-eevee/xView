@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
-import Login from './Login';
-import Applications from './Applications';
+import Login from './Login.jsx';
+import Applications from './Applications.jsx';
 
 const mapStateToProps = store => ({
   user: store.user,
@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 function Logged(props) {
-  const checkLog = props.user.logged;
+  const checkLog = props.user.loggedIn;
   if (!checkLog) {
     return <Login />;
   }

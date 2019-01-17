@@ -1,19 +1,24 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  userId: null,
-  logged: false,
+  loggedIn: false,
 }
 
 const userReducer = (state = initialState, action) => {
-  let logged;
+  let loggedIn;
 
   switch(action.type) {
-    case types.LOG_IN: 
-    logged = true;
+    case types.GOOGLE_LOG: 
+    loggedIn = action.payload;
     return {
       ...state,
-      logged
+      loggedIn
+    };
+    case types.GITHUB_LOG: 
+    status = true;
+    return {
+      ...state,
+      loggedIn
     };
     default: 
       return state;

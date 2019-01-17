@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
 const mapStateToProps = store => ({
-  // user: store.user
+  user: store.user
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -13,8 +13,14 @@ const mapDispatchToProps = dispatch => ({
   // logpass: (event) => {
   //   dispatch(actions.logPass(event.target.value));
   // },
-  login: (event) => {
-    dispatch(actions.logIn(event));
+  // login: (event) => {
+  //   dispatch(actions.logIn(event));
+  // }
+  googleLog: (event) => {
+    dispatch(actions.googleLog(event));
+  },
+  githubLog: (event) => {
+    dispatch(actions.githubLog(event));
   }
 });
 
@@ -22,10 +28,9 @@ const Login = (props) => {
   return (
     <div>
       <p>Log in!</p>
-      <input type='text' placeholder="Email" onChange={props.logemail} />
       <br/>
-      <input type='text' placeholder="Password" onChange={props.logpass} />
-      <button onClick={() => { props.login(); }}>Log in!</button>
+      <button onClick={() => { props.googleLog() }}>Log In With Google</button>
+      <button onClick={() => { props.githubLog() }}>Log In With GitHub</button>
     </div>
   );
 };

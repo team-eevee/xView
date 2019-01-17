@@ -9,18 +9,19 @@ const DROPDOWN_OPTIONS = [
 ]
 
 const mapStateToProps = store => ({
-  // user: store.user
+  user: store.user,
+  app: store.app
 });
 
 const mapDispatchToProps = dispatch => ({
   companyChange: (event) => {
-    dispatch(actions.inputChange(event.target.value));
+    dispatch(actions.companyChange(event.target.value));
   },
   recruiterChange: (event) => {
-    dispatch(actions.inputChange(event.target.value));
+    dispatch(actions.recruiterChange(event.target.value));
   },
   contactInfoChange: (event) => {
-    dispatch(actions.inputChange(event.target.value));
+    dispatch(actions.contactInfoChange(event.target.value));
   },
   dropdownChange: (event) => {
     dispatch(actions.dropdownChange(event.value))
