@@ -1,13 +1,13 @@
-const express = require("express");
-// const db = require('./db');
-
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const path = require("path");
-const PORT = 3000;
-
+const express = require('express');
+require('dotenv').config();
+const randomString = require('uuid');
+const path = require('path');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const login = require('./routes/login');
 const application = require('./routes/app');
+const PORT = 3000;
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -32,4 +32,4 @@ app.use((err, req, res, next) => {
 	res.status(500).send({'Error': err});
 });
 
-app.listen(PORT,()=>console.log(`listening on port: ${PORT}`));
+app.listen(PORT,() => console.log(`listening on port: ${PORT}`));
