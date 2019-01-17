@@ -8,14 +8,8 @@ const userReducer = (state = initialState, action) => {
   let loggedIn;
 
   switch(action.type) {
-    case types.GOOGLE_LOG: 
-    loggedIn = action.payload;
-    return {
-      ...state,
-      loggedIn
-    };
-    case types.GITHUB_LOG: 
-    status = true;
+    case types.CHECK_LOGIN: 
+    loggedIn = action.payload;    
     return {
       ...state,
       loggedIn

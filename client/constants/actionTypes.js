@@ -6,5 +6,4 @@ export const RECRUITER_CHANGE = 'RECRUITER_CHANGE';
 export const CONTACT_INFO_CHANGE = 'CONTACT_INFO_CHANGE';
 export const DROPDOWN_CHANGE = 'DROPDOWN_CHANGE';
 export const LOG_IN = 'LOG_IN';
-export const GOOGLE_LOG = 'GOOGLE_LOG';
-export const GITHUB_LOG = 'GITHUB_LOG';
+export const CHECK_LOGIN = 'CHECK_LOGIN';

@@ -22,9 +22,12 @@ export const createApp = (app) => {
 
 export const getApps = () => {
   return (dispatch) => {
-    fetch('http://localhost:3000/getApps')
+    fetch('/getApps')
     .then(res => res.json())
-    .then((apps) => {
+    .then((res) => {
+
+      // see what res is and take it out
+
       dispatch({
         type: types.GET_APPS,
         payload: apps
@@ -63,28 +66,15 @@ export const logIn = () => ({
   // payload: user,
 })
 
-export const googleLog = () => {
+export const checkLogin = () => {
   return (dispatch) => {
-    fetch ('http://localhost:3000/github')
+    fetch ('/login/checkUser')
     .then(res => res.json())
-      .then((loggedIn) => 
+    .then((res) => {
       dispatch({
-        type: types.GOOGLE_LOG,
-        payload: loggedIn,
+        type: types.CHECK_LOGIN,
+        payload: res.loggedIn,
       })
-    )
-  }
-}
-
-export const githubLog = () => {
-  return (dispatch) => {
-    fetch ('http://localhost:3000/github')
-    .then(res => res.json())
-      .then((loggedIn) => 
-      dispatch({
-        type: types.GITHUB_LOG,
-        payload: loggedIn,
-      })
-    )
+    });
   }
 }

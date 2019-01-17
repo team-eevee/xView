@@ -31,7 +31,7 @@ class Applications extends React.Component {
     return(
       <div>
         <h1>Your Applications</h1>
-        <button>Sign Out</button>
+        <button onClick={}>Sign Out</button>
         <span>Add Job Prospect<button>+</button></span>
       <BrowserRouter>
       <div>

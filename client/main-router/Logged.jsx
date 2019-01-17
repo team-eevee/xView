@@ -1,24 +1,38 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions/actions';
-
-import Login from './Login.jsx';
-import Applications from './Applications.jsx';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions/actions";
+import Login from "./Login.jsx";
+import Applications from "./Applications.jsx";
 
 const mapStateToProps = store => ({
-  user: store.user,
+  user: store.user
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  checkLogin: () => {
+    dispatch(actions.checkLogin());
+  },
 });
 
-function Logged(props) {
-  const checkLog = props.user.loggedIn;
-  if (!checkLog) {
-    return <Login />;
+class Logged extends Component {
+  constructor(props) {
+    super(props);
   }
-  return <Applications />;
+
+  componentDidMount() {
+    // request to server to check if user is logged in
+    this.props.checkLogin();
+  }
+
+  render() {
+    const checkLog = this.props.user.loggedIn;
+    console.log(checkLog);
+    if (!checkLog) return <Login />;
+    return <Applications />;
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Logged);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Logged);
