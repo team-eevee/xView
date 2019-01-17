@@ -2,21 +2,21 @@ const request = require("request");
 
 // O-Auth request to Github to get authenticated user information
 const getGitHubUser = (req, res, next) => {
-	// request to get user information
-	request.get(
-		{
-			url: 'https://api.github.com/user',
-			headers: {
-				Authorization: 'token ' + req.session.access_token,
-				'User-Agent': 'xView',
-			}
-		},
-		(err, response, body) => {
-			if (err) return next(err);
-			res.locals.user = JSON.parse(body);
-		 	return next();
-		},
-	);
+  // request to get user information
+  request.get(
+    {
+      url: "https://api.github.com/user",
+      headers: {
+        Authorization: "token " + req.session.access_token,
+        "User-Agent": "xView"
+      }
+    },
+    (err, response, body) => {
+      if (err) return next(err);
+      res.locals.user = JSON.parse(body);
+      return next();
+    }
+  );
 };
 
 /*************************************** GOOGLE OAUTH ****************(********************/
@@ -54,8 +54,7 @@ const getGoogleUrl = (req, res, next) => {
 const setGoogleCredentials = async (req, res, next) => {
   //take request code
   const code = req.query.code;
-  if (!code)
-    return res.status(400).send("invalid request");
+  if (!code) return res.status(400).send("invalid request");
   else {
     const { tokens } = await oauth2Client.getToken(code);
     oauth2Client.setCredentials(tokens);
