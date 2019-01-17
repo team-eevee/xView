@@ -44,29 +44,24 @@ router.all("/github/callback", (req, res) => {
   const code = req.query.code;
   const returnedState = req.query.state;
   // if state matches, send request to get access token
-  if (req.session.csrf_string === returnedState) {
-    request.post(
-      {
-        url:
-          "https://github.com/login/oauth/access_token?" +
-          qs.stringify({
-            client_id: process.env.GITHUB_CLIENT_ID,
-            client_secret: process.env.GITHUB_CLIENT_SECRET,
-            code: code,
-            state: req.session.csrf_string
-          })
-      },
-      (err, response, body) => {
-        // response will contain your new access token store token in session
-        req.session.access_token = qs.parse(body).access_token;
-        // redirect user to /home page
-        res.redirect("/login/gitHubLogin");
-      }
-    );
-  } else {
-    // if state doesn't match up, redirect to homepage
-    res.redirect("/");
-  }
+  request.post(
+    {
+      url:
+        "https://github.com/login/oauth/access_token?" +
+        qs.stringify({
+          client_id: process.env.GITHUB_CLIENT_ID,
+          client_secret: process.env.GITHUB_CLIENT_SECRET,
+          code: code,
+          state: req.session.csrf_string
+        })
+    },
+    (err, response, body) => {
+      // response will contain your new access token store token in session
+      req.session.access_token = qs.parse(body).access_token;
+      // redirect user to /home page
+      res.redirect("/login/gitHubLogin");
+    }
+  );
 });
 
 router.get(
@@ -83,15 +78,15 @@ router.get(
 /*************************************** GOOGLE OAUTH ****************(********************/
 
 router.get("/google", authController.getGoogleUrl, (req, res) => {
-	//redirects to google oAuth site
+  //redirects to google oAuth site
   res.redirect(res.locals.url);
 });
 
 router.get(
   "/google/callback",
   authController.setGoogleCredentials,
-	authController.getGoogleUser,
-	userController.verifyUser,
+  authController.getGoogleUser,
+  userController.verifyUser,
   (req, res) => {
     res.status(200).send({ loggedIn: true });
   }
