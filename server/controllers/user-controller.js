@@ -28,8 +28,6 @@ function verifyUser(req, res, next) {
         localStorage.setItem("ssid", JSON.stringify(ssidArray));
 
         await bcrypt.hash(newSession, 10, (err, session) => {
-          console.log("in async function 1");
-
           const values = [login, email, avatar_url, session];
           const insertQuery =
             'INSERT INTO "user" (username, email, avatar, session) VALUES ($1, $2, $3, $4);';
@@ -46,7 +44,6 @@ function verifyUser(req, res, next) {
         ssidArray.forEach(async function(ssid, index) {
           await bcrypt.compare(ssid, user.session, (err, result) => {
             if (result) {
-              console.log("in async function 2");
               res.cookie("user", ssid); // if the hashed session matches the stored session, set cookie and proceed
               return next();
             } else if (index === ssidArray.length - 1) {
