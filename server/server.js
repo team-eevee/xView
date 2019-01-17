@@ -7,11 +7,15 @@ const cookieParser = require('cookie-parser');
 const login = require('./routes/login');
 const application = require('./routes/app');
 const PORT = 3000;
+
+const login = require('./routes/login');
+const application = require('./routes/app');
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser())
+app.use(cookieParser());
+
 app.use(express.static(path.resolve(__dirname,'../client/build')))
 
 // route to login router
