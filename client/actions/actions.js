@@ -25,7 +25,10 @@ export const getApps = () => {
     fetch('http://localhost:3000/getApps')
     .then(res => res.json())
     .then((apps) => {
-
+      dispatch({
+        type: types.GET_APPS,
+        payload: apps
+      })
     })
   }
 }

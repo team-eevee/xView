@@ -1,3 +1,3 @@
 // add smart middleware logic here
 
-module.exports = { };
+module.exports = {};

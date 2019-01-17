@@ -9,13 +9,14 @@ import Profile from './Profile.jsx';
 import * as actions from '../actions/actions';
 
 const mapStateToProps = store => ({
-
+  app: store.app,
+  user: store.user
 })
 
 const mapDispatchToProps = dispatch => ({
-  // onLoad: () => {
-  //   dispatch(actions.getApps());
-  // }
+  onLoad: () => {
+    dispatch(actions.getApps());
+  }
 })
 
 class Applications extends React.Component {
