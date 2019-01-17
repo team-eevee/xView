@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   // }
 });
 
-const Login = (props) => {
+const ViewApp = (props) => {
   return (
     <div>
       <p>Log in!</p>
@@ -30,4 +30,4 @@ const Login = (props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewApp);
