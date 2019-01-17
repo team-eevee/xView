@@ -13,6 +13,12 @@ const axiosConfig = {
   "Content-Type": "application/json"
 };
 
+router.get("/checkUser", 
+  userController.checkUser, 
+  (req, res) => {
+  res.status(200).send(res.locals.logged);
+});
+
 /************************ GITHUB OAUTH ************************/
 
 // initialize session
@@ -72,8 +78,9 @@ router.get(
     res.status(200).send({ loggedIn: true });
   }
 );
-
 /******************************************************************************************/
+
+
 
 /*************************************** GOOGLE OAUTH ****************(********************/
 
