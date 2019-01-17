@@ -25,8 +25,6 @@ router.use(
   })
 );
 
-router.use(cookieParser())
-
 // the initial route when user presses login button
 router.get("/github", (req, res, next) => {
   // generate csrf_string for 'state' parameter
@@ -34,7 +32,7 @@ router.get("/github", (req, res, next) => {
   const githubAuthUrl =
     "http://github.com/login/oauth/authorize?" +
     qs.stringify({
-      client_id: process.env.CLIENT_ID,
+      client_id: process.env.GITHUB_CLIENT_ID,
       redirect_uri: "http://127.0.0.1:3000/login/github/callback",
       state: req.session.csrf_string
     });
@@ -52,8 +50,8 @@ router.all("/github/callback", (req, res) => {
         url:
           "https://github.com/login/oauth/access_token?" +
           qs.stringify({
-            client_id: process.env.CLIENT_ID,
-            client_secret: process.env.CLIENT_SECRET,
+            client_id: process.env.GITHUB_CLIENT_ID,
+            client_secret: process.env.GITHUB_CLIENT_SECRET,
             code: code,
             state: req.session.csrf_string
           })
@@ -84,7 +82,7 @@ router.get(
 
 /*************************************** GOOGLE OAUTH ****************(********************/
 
-router.get("/google",authController.getGoogleUrl, (req, res) => {
+router.get("/google", authController.getGoogleUrl, (req, res) => {
 	//redirects to google oAuth site
   res.redirect(res.locals.url);
 });

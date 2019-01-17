@@ -47,7 +47,6 @@ const getGoogleUrl = (req, res, next) => {
     access_type: "offline",
     scope: SCOPE
   });
-  console.log(url);
   res.locals.url = url;
   next();
 };

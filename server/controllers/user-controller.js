@@ -5,7 +5,7 @@ const LocalStorage = require('node-localstorage').LocalStorage;
 const localStorage = new LocalStorage('./serverStorage');
 
 // verify user to see if they exist in db (by email), if not then create new row in user table
-async function verifyUser(req, res, next) {
+function verifyUser(req, res, next) {
 	const { login, email, avatar_url } = res.locals.user;
 	const selectValue = [email];
 	const selectQuery = 'SELECT * FROM "user" WHERE email=$1;';
@@ -14,7 +14,8 @@ async function verifyUser(req, res, next) {
 	if (!localStorage.getItem('ssid')) localStorage.setItem('ssid', JSON.stringify([]));
 
 	db.oneOrNone(selectQuery, selectValue)
-		.then(user => {
+		.then(async function (user) {
+			console.log('user is ', user);
 			// if user doesn't exist then create new user in db with new session and store in
 			// local storage and cookie
 			if (!user) {
@@ -25,31 +26,34 @@ async function verifyUser(req, res, next) {
 				const ssidArray = JSON.parse(localStorage.getItem('ssid'));
 				ssidArray.push(newSession);
 				localStorage.setItem('ssid', JSON.stringify(ssidArray));
-				bcrypt.hash(newSession, 10, (err, session) => {
+
+				await bcrypt.hash(newSession, 10, (err, session) => {
+					console.log('in async function 1')
+
 					const values = [login, email, avatar_url, session];
 					const insertQuery = 'INSERT INTO "user" (username, email, avatar, session) VALUES ($1, $2, $3, $4);';
 					db.none(insertQuery, values)
+						.then(() => next())
 						.catch(err => next(err));
-					});
+					})
 				} else { // if user exists, get the existing session
 				const ssidArray = JSON.parse(localStorage.getItem('ssid'));
 				let exists = false;
 
 				// asynchronously compare session with hashed session in db
-				ssidArray.forEach((ssid, index) => {
-					bcrypt.compare(ssid, hashedSession, (err, result) => {
+				ssidArray.forEach(async function(ssid, index) {
+					await bcrypt.compare(ssid, user.session, (err, result) => {
 						if (result) {
-							return ;
+							console.log('in async function 2')
+							res.cookie('user', ssid); // if the hashed session matches the stored session, set cookie and proceed
+							return next();
 						}	else if (index === (ssidArray.length - 1)) {
-							resolve(false);
+							return next('Invalid attempt.');
 						}
 					});
 				});
-
-				res.cookie('user', ssid); // if the hashed session matches the stored session, set cookie and proceed
 			}
 		})
-		.then(() => { console.log('going to send nowwwww'); next()})
 		.catch(err => next(err));
 };
 

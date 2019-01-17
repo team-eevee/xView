@@ -8,8 +8,6 @@ const login = require('./routes/login');
 const application = require('./routes/app');
 const PORT = 3000;
 
-const login = require('./routes/login');
-const application = require('./routes/app');
 const app = express();
 
 app.use(bodyParser.json());
