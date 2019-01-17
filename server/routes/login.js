@@ -23,6 +23,8 @@ router.use(
 	})
 );
 
+router.use(cookieParser())
+
 // the initial route when user presses login button
 router.get('/github', (req, res, next) => {
 	// generate csrf_string for 'state' parameter
@@ -69,7 +71,8 @@ router.all('/github/callback', (req, res) => {
 
 // sends back the user that was found
 router.get('/gitHubLogin', authController.getGitHubUser, userController.verifyUser, (req, res) => {
-	res.status(200).send(res.locals.user);
+	console.log('sending')
+	res.status(200).send({ loggedIn: true });
 });
 
 /******************************************************************************************/

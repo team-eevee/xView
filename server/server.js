@@ -5,7 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const login = require('./routes/login');
-const app = require('./routes/app');
+const application = require('./routes/app');
 const PORT = 3000;
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(express.static(path.resolve(__dirname,'../client/build')))
 app.use('/login', login);
 
 // route to app router
-app.use('/app', app);
+app.use('/app', application);
 
 // serve up the index.html file for testing
 app.get('/', (req, res, next) => {
@@ -30,4 +30,4 @@ app.use((err, req, res, next) => {
 	res.status(500).send({'Error': err});
 });
 
-app.listen(PORT,()=>console.log(`listening on port: ${PORT}`));
+app.listen(PORT,() => console.log(`listening on port: ${PORT}`));
