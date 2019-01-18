@@ -7,3 +7,4 @@ export const CONTACT_INFO_CHANGE = 'CONTACT_INFO_CHANGE';
 export const DROPDOWN_CHANGE = 'DROPDOWN_CHANGE';
 export const LOG_IN = 'LOG_IN';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
+export const SIGN_OUT = 'SIGN_OUT';

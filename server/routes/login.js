@@ -27,17 +27,7 @@ router.use(
   })
 );
 
-// router.use(cookieParser());
-
-// until adrian is done
-router.get('/checkUser', (req, res) => {
-	if (req.cookies.user) {
-		res.status(200).json({ loggedIn: true })
-	} else {
-		res.status(200).json({ loggedIn: false })
-	}
-});
-
+router.get('/checkUser', (req, res) => (req.cookies.user) ? res.send({ loggedIn: true }) : res.send({ loggedIn: false }));
 
 // the initial route when user presses login button
 router.get("/github", (req, res, next) => {
