@@ -17,10 +17,16 @@ const axiosConfig = {
 
 router.get("/checkUser", 
   userController.checkUser, 
+  userController.getUserInfo,
   (req, res) => {
+    console.log(res.locals.logged);
   res.status(200).send(res.locals.logged);
 });
 
+router.get("/signout",(req,res)=>{
+  res.clearCookie('user')
+  res.redirect('/');
+})
 /************************ GITHUB OAUTH ************************/
 
 // initialize session
