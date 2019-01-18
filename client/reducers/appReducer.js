@@ -15,10 +15,6 @@ const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_APPS:
       appList = Object.values(action.payload);
-
-      // check with Adrian's code 
-      console.log('appList: ', appList);
-      
       return {
         ...state,
         appList

@@ -57,6 +57,7 @@ body {
 	flex-direction: row;
 	width: 100%;
 	justify-content: space-between;
+	margin-bottom: 2rem;
 }
 
 #root p {
@@ -130,7 +131,8 @@ body {
 	padding-left: 1rem;
 	padding-top: 1rem;
 	padding-right: 1rem;
-	background-image: linear-gradient(to top, #dfe9f3ba 0%, rgba(255, 255, 255, 0.94) 100%);
+	background: #dfe9f3b1;
+	overflow: scroll;
 }
 
 .content h1 {
@@ -165,6 +167,7 @@ body {
 }
 
 .addApp {
+	background: rgba(255, 255, 255, 0.831);
 	transition-duration: 0.3s;
 	width: 10%;
 	padding: 0.3rem 1rem;
@@ -181,6 +184,7 @@ body {
 }
 
 .signOut {
+	background: rgba(255, 255, 255, 0.831);
 	transition-duration: 0.3s;
 	padding: 0.3rem 1rem;
 	border: solid rgba(0, 0, 0, 0.667) 0.1rem;
@@ -192,4 +196,46 @@ body {
 .signOut:hover {
 	background: rgb(255, 119, 119);
 	color: rgba(255, 255, 255, 0.947);
+}
+
+.company {
+	background: rgba(255, 255, 255, 0.968);
+	border: solid 0.1rem rgba(255, 255, 255, 0.968);
+	border-radius: 0.4rem;
+	-webkit-box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+
+.company h3 {
+	padding-left: 0.8rem;
+	font-size: 1.3rem;
+	color: rgb(23, 23, 23);
+}
+
+.company h4 {
+	padding-left: 0.8rem;
+	font-size: 0.9rem;
+	color: rgb(26, 26, 26);
+}
+
+.company img {
+	width: 8%;
+	height: 8%;
+	border-radius: 0.8rem;
+}
+
+#domain {
+	font-size: 0.8rem;
+	color: rgb(28, 28, 28);
+}
+
+.namepic {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0.1rem 1rem;
 }

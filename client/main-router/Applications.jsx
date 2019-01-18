@@ -14,7 +14,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoad: userId => {
+  getApps: userId => {
     dispatch(actions.getApps(userId));
   },
   signOut: () => {
@@ -28,7 +28,7 @@ class Applications extends React.Component {
   }
 
   componentDidMount() {
-    this.props.onLoad(this.props.user.userId);
+    this.props.getApps(this.props.user.userId);
   }
 
   render() {
@@ -43,14 +43,18 @@ class Applications extends React.Component {
     }
 
     const apps = [];
-    Object.values(this.props.app.appList).forEach((app) => {
-      apps.push(<div>
-        <h3>{app.companyName}</h3>
-        <img src={app.logo}></img>
-        <p>{app.domain}</p>
-        </div>)
-    });
-
+    if (this.props.app.appList) {
+      (this.props.app.appList).forEach((app) => {
+        apps.push(<div className="company">
+          <h3>{app.companyName}</h3>
+          <div className="namepic">
+            <img src={app.logo}></img>
+            <h4>{app.description}</h4>
+          </div>
+          <p id="domain">{app.domain}</p>
+          </div>)
+      });
+    }
     return (
       <div className="main">
         <div className="nav">
@@ -85,8 +89,10 @@ class Applications extends React.Component {
             <button className="addApp">Add Job Prospect +</button>
             <button className="signOut" onClick={this.props.signOut}>Sign Out</button>
           </span>
-          <h1>Your Applications</h1>
-          {apps}
+          <h1>All Applications</h1>
+          <div className="apps">
+            {apps}
+          </div>
         </div>
       </div>
     );

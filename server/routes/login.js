@@ -15,6 +15,17 @@ const axiosConfig = {
   "Content-Type": "application/json"
 };
 
+router.get("/checkUser", 
+  userController.checkUser, 
+  userController.getUserInfo,
+  (req, res) => {
+    res.status(200).send(res.locals.logged);
+});
+
+router.get("/signout",(req,res)=>{
+  res.clearCookie('user')
+  res.redirect('/');
+})
 /************************ GITHUB OAUTH ************************/
 
 // initialize session
@@ -26,8 +37,6 @@ router.use(
     saveUninitialized: false
   })
 );
-
-router.get('/checkUser', (req, res) => (req.cookies.user) ? res.send({ loggedIn: true }) : res.send({ loggedIn: false }));
 
 // the initial route when user presses login button
 router.get("/github", (req, res, next) => {
@@ -76,8 +85,9 @@ router.get(
     res.redirect('/');
   }
 );
-
 /******************************************************************************************/
+
+
 
 /*************************************** GOOGLE OAUTH ****************(********************/
 

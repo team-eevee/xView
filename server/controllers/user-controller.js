@@ -12,6 +12,7 @@ function verifyUser(req, res, next) {
 
   // check if an array of ssid exist in local storage
   if (!localStorage.getItem("ssid"))
+  
     localStorage.setItem("ssid", JSON.stringify([]));
 
   db.oneOrNone(selectQuery, selectValue)
@@ -39,15 +40,13 @@ function verifyUser(req, res, next) {
         // if user exists, get the existing session
         const ssidArray = JSON.parse(localStorage.getItem("ssid"));
         let exists = false;
-
         // asynchronously compare session with hashed session in db
         ssidArray.forEach(async function(ssid, index) {
           await bcrypt.compare(ssid, user.session, (err, result) => {
             if (result) {
               res.cookie("user", ssid); // if the hashed session matches the stored session, set cookie and proceed
+              exists = true;
               return next();
-            } else if (index === ssidArray.length - 1) {
-              return next("Invalid attempt.");
             }
           });
         });
@@ -56,4 +55,47 @@ function verifyUser(req, res, next) {
     .catch(err => next(err));
 }
 
-module.exports = { verifyUser };
+const checkUser = (req, res, next) => {
+  //get data from cookie
+  if (req.cookies.user) {
+    const sessionHash = req.cookies.user;
+    selectQuery = 'SELECT session,user_id from "user"';
+		res.locals.logged = {loggedIn:false}
+
+    //get database sessions and compare with bcrypt
+    db.query(selectQuery).then(data => {
+      data.forEach(async (ssid, index) => {
+        await bcrypt.compare(sessionHash, ssid.session, (err, result) => {
+          if (result) {
+						res.locals.logged = {loggedIn:true, userId : ssid.user_id}
+            return next();
+          }
+        });
+      });
+    });
+  }
+};
+
+const getUserInfo = (req,res,next)=>{
+  const userId = Number(res.locals.logged.userId);
+  if (userId && userId !== NaN) {
+    const queryString =
+      'SELECT username,email,avatar from "user" WHERE user_id=$1';
+    const queryValue = userId;
+    db.oneOrNone(queryString, queryValue).then(data => {
+      if (!data) return res.status(400).send("invalid userId");
+      const {username,email,avatar}=data;
+      res.locals.logged = {
+        ...res.locals.logged,
+        username,
+        email,
+        avatar,
+      }
+      next();
+    });
+  } else {
+    return res.status(400).send("invalid userId");
+  }
+}
+
+module.exports = { verifyUser, checkUser, getUserInfo };

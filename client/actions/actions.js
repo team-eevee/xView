@@ -21,7 +21,7 @@ export const createApp = app => {
 
 export const getApps = userId => {
   return dispatch => {
-    fetch(`/getApps/:${userId}`)
+    fetch('/app/getApps')
       .then(res => res.json())
       .then(res => {
         dispatch({
@@ -74,7 +74,6 @@ export const signOut = () => {
 };
 
 export const checkLogin = () => {
-  console.log('in here');
   return dispatch => {
     fetch("/login/checkUser")
       .then(res => res.json())

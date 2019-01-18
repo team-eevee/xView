@@ -2,7 +2,7 @@ import * as types from "../constants/actionTypes";
 
 const initialState = {
   loggedIn: false,
-  userid: null,
+  userId: null,
   username: null,
   email: null,
   avatar: null
