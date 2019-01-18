@@ -6,7 +6,6 @@ const localStorage = new LocalStorage("./serverStorage");
 
 // verify user to see if they exist in db (by email), if not then create new row in user table
 function verifyUser(req, res, next) {
-  console.log('verify user')
   const { login, email, avatar_url } = res.locals.user;
   const selectValue = [email];
   const selectQuery = 'SELECT * FROM "user" WHERE email=$1;';
@@ -45,7 +44,6 @@ function verifyUser(req, res, next) {
         ssidArray.forEach(async function(ssid, index) {
           await bcrypt.compare(ssid, user.session, (err, result) => {
             if (result) {
-              console.log(result);
               res.cookie("user", ssid); // if the hashed session matches the stored session, set cookie and proceed
               exists = true;
               return next();
@@ -66,16 +64,11 @@ const checkUser = (req, res, next) => {
 
     //get database sessions and compare with bcrypt
     db.query(selectQuery).then(data => {
-			console.log(data);
       data.forEach(async (ssid, index) => {
-				console.log('comparing',ssid.session,sessionHash);
         await bcrypt.compare(sessionHash, ssid.session, (err, result) => {
-          console.log(result);
           if (result) {
 						res.locals.logged = {loggedIn:true, userId : ssid.user_id}
             return next();
-          } else if (index === data.length - 1) {
-            return res.end();
           }
         });
       });

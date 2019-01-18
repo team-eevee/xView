@@ -19,8 +19,7 @@ router.get("/checkUser",
   userController.checkUser, 
   userController.getUserInfo,
   (req, res) => {
-    console.log(res.locals.logged);
-  res.status(200).send(res.locals.logged);
+    res.status(200).send(res.locals.logged);
 });
 
 router.get("/signout",(req,res)=>{
@@ -38,8 +37,6 @@ router.use(
     saveUninitialized: false
   })
 );
-
-
 
 // the initial route when user presses login button
 router.get("/github", (req, res, next) => {

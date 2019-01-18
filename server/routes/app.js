@@ -28,19 +28,6 @@ router.get("/getUser/:userId", (req, res) => {
 });
 
 router.get("/getApps", (req, res) => {
-  console.log("apps");
-  // const userId = Number(req.params.userId);
-  // console.log(userId);
-  // if (userId && userId !== NaN) {
-  //   const queryString = 'SELECT * FROM application';
-  //   const queryValue = userId;
-  //   db.query(queryString, queryValue).then(data => {
-  //     if(!data) return res.status(400).send('invalid userId');
-  //     console.log(data);
-  //     return res.send(data);
-  //   });
-  // }
-  // return res.status(400).send("invalid userId");
   const iq = [
     "Can you tell me a little about yourself?",
     "How did you hear about the position?",
@@ -78,7 +65,6 @@ router.get("/getApps", (req, res) => {
   const queryString = "SELECT * FROM company";
   let business = [];
   db.query(queryString).then(business => {
-    console.log(business);
     const apps = {};
     for (let i = 0; i < 20; i += 1) {
       const num = Math.floor(Math.random() * business.length);
@@ -97,7 +83,6 @@ router.get("/getApps", (req, res) => {
         appId: i
       };
     }
-    console.log("apps", apps);
     res.send(apps).json();
   });
 });

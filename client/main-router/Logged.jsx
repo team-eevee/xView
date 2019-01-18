@@ -26,7 +26,6 @@ class Logged extends Component {
 
   render() {
     const checkLog = this.props.user.loggedIn;
-    console.log(checkLog);
     if (!checkLog) return <Login />;
     return <Applications />;
   }

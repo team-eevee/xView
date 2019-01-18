@@ -1,0 +1,241 @@
+body {
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  background-blend-mode: multiply;
+  height: 100vh;
+  margin: 0;
+}
+
+.login {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#root {
+  color: #f2f2f2;
+	display: flex;
+	height: 100vh;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Questrial", sans-serif;
+  font-weight: bold;
+  font-size: 6rem;
+  border: solid 0.1rem #f2f2f2;
+  border-radius: 0.8rem;
+  text-align: center;
+  padding: 0.9rem 3rem;
+  margin-bottom: 5rem;
+}
+
+#minilogo {
+	font-family: "Questrial", sans-serif;
+  font-weight: bold;
+  font-size: 3.3rem;
+  border: solid 0.1rem #f2f2f2;
+  border-radius: 0.8rem;
+  text-align: center;
+	padding: 0.3rem 1rem;
+	margin-bottom: 2rem;
+	margin-top: 1rem;
+}
+
+#root a {
+  font-family: "Questrial", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  word-spacing: 0.9px;
+  letter-spacing: 0.5px;
+}
+
+.topButtons {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+#root p {
+  font-family: "Questrial", sans-serif;
+  color: #f2f2f2;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#github {
+  transition-duration: 0.3s;
+  color: #f2f2f2;
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0.3rem;
+  background: #8fc800; /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    #8fc800 0%,
+    #8fc800 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #8fc800 0%,
+    #8fc800 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #8fc800 0%,
+    #8fc800 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fc800', endColorstr='#8fc800',GradientType=0 ); /* IE6-9 */
+}
+
+#github:hover {
+  background: #d2f5cb;
+  color: #8fc800;
+}
+
+#google {
+  transition-duration: 0.3s;
+  color: #454545;
+  border-radius: 0.3rem;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  background: rgb(254, 254, 254);
+  padding: 0.8rem 2rem;
+}
+
+#google:hover {
+  background: #f2796c;
+  color: rgb(254, 254, 254);
+}
+
+#git, #goo {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.main {
+	display: flex;
+	flex-direction: row;
+	height: 100vh;
+	width: 100%;;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding-left: 1rem;
+	padding-top: 1rem;
+	padding-right: 1rem;
+	background: #dfe9f3b1;
+	overflow: scroll;
+}
+
+.content h1 {
+	z-index: 2;
+	width: 100%;
+	color: rgb(55, 55, 55);
+}
+
+.content button {
+	width: 10%;
+	height: 5%;
+}
+
+.nav {
+	z-index: 1;
+	padding-top: 0.1rem;
+	padding-right: 1.5rem;
+	padding-left: 1rem;
+	display: flex;
+	flex-direction: column;
+	-webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+	height: 100hv;
+}
+
+.navContent {
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.addApp {
+	background: rgba(255, 255, 255, 0.831);
+	transition-duration: 0.3s;
+	width: 10%;
+	padding: 0.3rem 1rem;
+	border: solid rgba(29, 131, 255, 0.913) 0.1rem;
+	color: rgba(29, 131, 255, 0.913);
+	border-radius: 0.3rem;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.addApp:hover {
+	background: rgba(29, 131, 255, 0.913);
+	color: rgba(255, 255, 255, 0.968);
+}
+
+.signOut {
+	background: rgba(255, 255, 255, 0.831);
+	transition-duration: 0.3s;
+	padding: 0.3rem 1rem;
+	border: solid rgba(0, 0, 0, 0.667) 0.1rem;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.signOut:hover {
+	background: rgb(255, 119, 119);
+	color: rgba(255, 255, 255, 0.947);
+}
+
+.company {
+	background: rgba(255, 255, 255, 0.968);
+	border: solid 0.1rem rgba(255, 255, 255, 0.968);
+	border-radius: 0.4rem;
+	-webkit-box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+
+.company h3 {
+	padding-left: 0.8rem;
+	font-size: 1.3rem;
+	color: rgb(23, 23, 23);
+}
+
+.company h4 {
+	padding-left: 0.8rem;
+	font-size: 0.9rem;
+	color: rgb(26, 26, 26);
+}
+
+.company img {
+	width: 8%;
+	height: 8%;
+	border-radius: 0.8rem;
+}
+
+#domain {
+	font-size: 0.8rem;
+	color: rgb(28, 28, 28);
+}
+
+.namepic {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0.1rem 1rem;
+}
