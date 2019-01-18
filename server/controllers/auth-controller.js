@@ -16,10 +16,12 @@ const getGitHubUser = (req, res, next) => {
     (err, response, body) => {
       if (err) return next(err);
       res.locals.user = JSON.parse(body);
+      console.log("got github user", res.locals.user);
       return next();
     }
   );
 };
+
 
 /*************************************** GOOGLE OAUTH ************************************/
 
@@ -55,7 +57,7 @@ const getGoogleUrl = (req, res, next) => {
 
 const setGoogleCredentials = async (req, res, next) => {
   //take request code
-  const {code} = req.query;
+  const { code } = req.query;
   if (!code) return res.status(400).send("invalid request");
   else {
     const { tokens } = await oauth2Client.getToken(code);
