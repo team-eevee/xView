@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import CreateApp from "../app-router/CreateApp.jsx";
@@ -22,16 +22,17 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-class Applications extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Applications = (props) => {
 
-  componentDidMount() {
-    this.props.getApps(this.props.user.userId);
-  }
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (count === 0) {
+      console.log('hello');
+      props.getApps(props.user.userId);
+      setCount(count + 1);
+    }
+  });
 
-  render() {
     const linkStyle = {
       textDecoration: "none",
       marginBottom: '2.5rem', 
@@ -43,8 +44,8 @@ class Applications extends React.Component {
     }
 
     const apps = [];
-    if (this.props.app.appList) {
-      (this.props.app.appList).forEach((app) => {
+    if (props.app.appList) {
+      (props.app.appList).forEach((app) => {
         apps.push(<div className="company">
           <h3>{app.companyName}</h3>
           <div className="namepic">
@@ -58,7 +59,7 @@ class Applications extends React.Component {
     return (
       <div className="main">
         <div className="nav">
-          <h1 id="minilogo">xView</h1>
+          <h1 id="minilogo">AppliView</h1>
           <BrowserRouter>
             <div className="navContent">
               <Link to="/applications" style={linkStyle}>
@@ -87,7 +88,7 @@ class Applications extends React.Component {
         <div className="content">
           <span className="topButtons">
             <button className="addApp">Add Job Prospect +</button>
-            <button className="signOut" onClick={this.props.signOut}>Sign Out</button>
+            <button className="signOut" onClick={props.signOut}>Sign Out</button>
           </span>
           <h1>All Applications</h1>
           <div className="apps">
@@ -96,7 +97,6 @@ class Applications extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 export default connect(

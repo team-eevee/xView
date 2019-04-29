@@ -1,5 +1,5 @@
 {
-  "name": "xview",
+  "name": "appliview",
   "version": "1.0.0",
   "description": "Modern interview tracking website",
   "main": "index.js",
@@ -38,8 +38,8 @@
     "node-sass": "^4.11.0",
     "path": "^0.12.7",
     "querystring": "^0.2.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-dropdown": "^1.6.3",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",

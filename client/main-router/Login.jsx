@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 const Login = (props) => {
   return (
     <div className="login">
-      <h1 className="logo">xView</h1>
+      <h1 className="logo">AppliView</h1>
       <a id="google" href='/login/google'>Log in with <span id="goo">Google</span></a>
       <a id="github" href='/login/github'>Log in with <span id="git">GitHub</span></a>
     </div>
